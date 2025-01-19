@@ -8,8 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     EmptyList: typeof import('./src/components/EmptyList.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    Loader: typeof import('./src/components/Loader.vue')['default']
     PostCard: typeof import('./src/components/PostCard.vue')['default']
     PostList: typeof import('./src/components/PostList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

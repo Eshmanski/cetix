@@ -63,8 +63,9 @@ import { computed, onMounted, onUnmounted, ref, type Ref } from 'vue';
 import { toRegexp } from '@/models/helpers';
 import { useMainStore } from '@/store/main';
 import type { Post } from '@/type';
+import type { VVirtualScroll } from 'vuetify/components';
 import uniqid from 'uniqid';
-import { VVirtualScroll } from 'vuetify/components';
+
 
 const mainStore = useMainStore();
 
@@ -97,7 +98,7 @@ function addNew() {
   const newPost = { id, name, isNew: true };
 
   mainStore.addPost(newPost);
-  if (virtualScroll.value) virtualScroll.value.scrollToIndex(0);
+  if (virtualScroll.value) virtualScroll.value?.scrollToIndex(0);
 }
 
 function update(post: Post) {
