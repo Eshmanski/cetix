@@ -64,7 +64,7 @@ import { toRegexp } from '@/models/helpers';
 import { useMainStore } from '@/store/main';
 import type { Post } from '@/type';
 import uniqid from 'uniqid';
-import { VVirtualScroll } from 'vuetify/components';
+import type { VVirtualScroll } from 'vuetify/components/VVirtualScroll';
 
 const mainStore = useMainStore();
 
