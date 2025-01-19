@@ -2,7 +2,7 @@ export async function fetchDataCache<T>(url: string) {
   const data: string | null = localStorage.getItem(url);
 
   if (!data) {
-    const res = await fetch('/test.json');
+    const res = await fetch(url);
     const data = await res.json();
 
     localStorage.setItem(url, JSON.stringify(data));

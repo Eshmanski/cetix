@@ -2,6 +2,8 @@ import { fetchDataCache, saveToLocaleStorage } from "@/models/helpers";
 import type { MainState, Post, PostResponse } from "@/type";
 import { defineStore } from "pinia";
 
+const POSTS_URL = location.origin + '/cetix/test.json'
+
 export const useMainStore = defineStore('main', {
   state: (): MainState => ({
     posts: [],
@@ -32,17 +34,18 @@ export const useMainStore = defineStore('main', {
     },
 
     saveState() {
-      saveToLocaleStorage<PostResponse>('./test.json', { posts: this.posts });
+      saveToLocaleStorage<PostResponse>(POSTS_URL, { posts: this.posts });
     },
 
     async getPosts() {
       try {
-        const resp = await fetchDataCache<PostResponse>('./test.json');
+        this.isLoading = true;
+        const resp = await fetchDataCache<PostResponse>(POSTS_URL);
         this.setPosts(resp.posts);
       } catch (e) {
         console.error(e);
       } finally {
-        console.log('finally')
+        this.isLoading = false;
       }
     }
   }
